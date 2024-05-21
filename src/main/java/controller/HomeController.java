@@ -12,9 +12,9 @@ public class HomeController {
 	private Stage stage;
 	private Stage parentStage;
 	@FXML
-	private MenuItem viewProfile; // Corresponds to the Menu item "viewProfile" in HomeView.fxml
+	private Menu viewProfile; // Corresponds to the Menu item "viewProfile" in HomeView.fxml
 	@FXML
-	private MenuItem updateProfile; // // Corresponds to the Menu item "updateProfile" in HomeView.fxml
+	private Menu updateProfile; // // Corresponds to the Menu item "updateProfile" in HomeView.fxml
 	
 	public HomeController(Stage parentStage, Model model) {
 		this.stage = new Stage();
