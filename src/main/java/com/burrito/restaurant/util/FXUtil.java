@@ -13,14 +13,10 @@ import javafx.stage.Stage;
  */
 public class FXUtil {
 
-    public static final String START_VIEW = "start-view.fxml";
-    public static final String STAFF_REGISTRATION_VIEW = "staff-registration-view.fxml";
-    public static final String STAFF_LOGIN_VIEW = "staff-login-view.fxml";
-    public static final String ADMIN_REGISTRATION_VIEW = "admin-registration-view.fxml";
-    public static final String ADMIN_LOGIN_VIEW = "admin-login-view.fxml";
-    public static final String DETAILS_VIEW = "details-view.fxml";
-    public static final String RECRUIT_DETAILS_VIEW = "recruit-details-view.fxml";
-    public static final String RECRUIT_REGISTRATION_VIEW = "recruit-registration-view.fxml";
+    public static final String LOGIN_VIEW = "login-view.fxml";
+    public static final String HOME_VIEW = "home-view.fxml";
+    public static final String SIGN_UP_VIEW = "signup-view.fxml";
+    public static final String EDIT_PROFILE_VIEW = "edit-profile-view.fxml";
 
     /**
      * Load an FXML view in a new stage and transfer data to its controller.

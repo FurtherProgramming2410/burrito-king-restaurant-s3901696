@@ -1,7 +1,6 @@
 package com.burrito.restaurant.db;
 
 import com.burrito.restaurant.model.Order;
-
 import java.sql.SQLException;
 
 public interface OrderDao {

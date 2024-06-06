@@ -5,12 +5,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DbConnection {
-	// URL pattern for database
-	private static final String DB_URL = "jdbc:sqlite:application.db";
+    private static String databaseUrl = "jdbc:sqlite:application.db";
 
-	public static Connection getConnection() throws SQLException {
-		// DriverManager is the basic service for managing a set of JDBC drivers
-		// Can also pass username and password
-		return DriverManager.getConnection(DB_URL);
-	}
+    public static void setDatabaseUrl(String url) {
+        databaseUrl = url;
+    }
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(databaseUrl);
+    }
 }
