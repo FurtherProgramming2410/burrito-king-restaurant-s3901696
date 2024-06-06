@@ -1,17 +1,31 @@
 package com.burrito.restaurant.model;
 
+import java.util.Objects;
+
 public class FoodItem {
 
     private int itemId; // Add this field
+    private String itemName;
     private double unitPrice;
-    int quantity;
 
-    public FoodItem(double unitPrice, int quantity) {
-        this.unitPrice = unitPrice;
-        this.quantity = quantity;
+    public FoodItem() {
     }
 
-    // Getter and setter for itemId
+    public FoodItem(double unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public FoodItem(String itemName, double unitPrice) {
+        this.itemName = itemName;
+        this.unitPrice = unitPrice;
+    }
+
+    public FoodItem(int itemId, String itemName, double unitPrice) {
+        this.itemId = itemId;
+        this.itemName = itemName;
+        this.unitPrice = unitPrice;
+    }
+
     public int getItemId() {
         return itemId;
     }
@@ -20,7 +34,14 @@ public class FoodItem {
         this.itemId = itemId;
     }
 
-    // Existing getters and setters
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
     public double getUnitPrice() {
         return unitPrice;
     }
@@ -29,11 +50,16 @@ public class FoodItem {
         this.unitPrice = unitPrice;
     }
 
-    public int getQuantity() {
-        return quantity;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FoodItem foodItem = (FoodItem) o;
+        return itemId == foodItem.itemId;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    @Override
+    public int hashCode() {
+        return Objects.hash(itemId);
     }
 }

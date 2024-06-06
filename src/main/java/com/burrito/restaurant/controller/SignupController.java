@@ -5,6 +5,7 @@ import com.burrito.restaurant.db.implementation.UserDaoImpl;
 import com.burrito.restaurant.model.User;
 import com.burrito.restaurant.util.FXUtil;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -15,6 +16,7 @@ import java.util.ResourceBundle;
 
 public class SignupController implements Initializable {
 
+    @FXML
     public TextField usernameTxtLbl;
     public PasswordField passwordTxtLbl;
     public TextField firstNameTxtLbl;

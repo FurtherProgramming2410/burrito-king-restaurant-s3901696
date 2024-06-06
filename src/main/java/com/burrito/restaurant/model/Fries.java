@@ -6,34 +6,19 @@ public class Fries extends FoodItem implements Cookable {
     private static final int batchSize = 5;
 
     public Fries(double unitPrice, int quantity) {
-        super(unitPrice, quantity);
-    }
-
-    private int getActualQuantityNeeded(int remainingServes) {
-        if (remainingServes >= this.getQuantity()) {
-            return 0;
-        } else if (remainingServes > 0) {
-            return this.getQuantity() - remainingServes;
-        } else {
-            return this.getQuantity();
-        }
-    }
-
-    private int getActualBatchesCooked(int remainingServes) {
-        return (int) Math.ceil(getActualQuantityNeeded(remainingServes) / ((double) batchSize));
+        super(quantity);
+        this.setItemName(this.getClass().getSimpleName());
     }
 
     @Override
-    public int getActualQuantityCooked(Restaurant restaurant) {
-        return getActualBatchesCooked(restaurant.getRemainedFries()) * batchSize;
+    public int getActualQuantityCooked() {
+//        return getActualBatchesCooked(restaurant.getRemainedFries()) * batchSize;
+        return 0;
     }
 
     @Override
-    public int getPreparationTime(Restaurant restaurant) {
-        return prepTimeForOneServe * getActualBatchesCooked(restaurant.getRemainedFries());
-    }
-
-    public void addQuantity(int additionalQuantity) {
-        this.quantity += additionalQuantity;
+    public int getPreparationTime() {
+//        return prepTimeForOneServe * getActualBatchesCooked(restaurant.getRemainedFries());
+        return 0;
     }
 }

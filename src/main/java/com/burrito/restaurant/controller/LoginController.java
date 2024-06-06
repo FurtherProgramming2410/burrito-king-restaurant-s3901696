@@ -1,6 +1,7 @@
 package com.burrito.restaurant.controller;
 
 import com.burrito.restaurant.db.UserDao;
+import com.burrito.restaurant.db.UserDetails;
 import com.burrito.restaurant.db.implementation.UserDaoImpl;
 import com.burrito.restaurant.model.User;
 import com.burrito.restaurant.util.FXUtil;
@@ -40,6 +41,7 @@ public class LoginController implements Initializable {
             try {
                 User user = userDao.login(username, password);
                 if (user != null) {
+                    UserDetails.setCurrentUser(user);
                     errMsgTxtLbl.setText("Login successful.");
                     // Navigate to the next view (e.g., dashboard)
                     FXUtil.loadView(actionEvent, FXUtil.DASH_VIEW, "Dashboard");
