@@ -25,7 +25,8 @@ public class BurritoApp extends Application {
     public void start(Stage primaryStage) {
         try {
             model.setup();
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("LoginView.fxml"));
+            FXMLLoader loader = new FXMLLoader(BurritoApp.class.getResource("LoginView.fxml"));
+
             // Customize controller instance
             LoginController loginController = new LoginController(primaryStage, model);
 

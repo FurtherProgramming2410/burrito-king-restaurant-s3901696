@@ -1,8 +1,15 @@
 package com.burrito.restaurant.model;
 
+import com.burrito.restaurant.old.Order;
+
+import java.util.List;
+
 public class User {
 	private String username;
 	private String password;
+	private String email;
+	private int points;
+	private List<Order> orderList;
 
 	public User() {
 	}

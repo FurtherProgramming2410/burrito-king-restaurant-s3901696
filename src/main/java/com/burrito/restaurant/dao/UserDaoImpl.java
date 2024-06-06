@@ -10,6 +10,7 @@ public class UserDaoImpl implements UserDao {
 	private final String TABLE_NAME = "users";
 
 	public UserDaoImpl() {
+
 	}
 
 	@Override

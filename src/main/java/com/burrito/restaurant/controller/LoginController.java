@@ -1,6 +1,6 @@
 package com.burrito.restaurant.controller;
 
-import com.burrito.restaurant.Main;
+import com.burrito.restaurant.BurritoApp;
 import com.burrito.restaurant.model.Model;
 import com.burrito.restaurant.model.User;
 import javafx.fxml.FXML;
@@ -48,7 +48,7 @@ public class LoginController {
 					if (user != null) {
 						model.setCurrentUser(user);
 						try {
-							FXMLLoader loader = new FXMLLoader(Main.class.getResource("HomeView.fxml"));
+							FXMLLoader loader = new FXMLLoader(BurritoApp.class.getResource("HomeView.fxml"));
 							HomeController homeController = new HomeController(stage, model);
 							
 							loader.setController(homeController);
@@ -79,7 +79,7 @@ public class LoginController {
 		
 		signup.setOnAction(event -> {
 			try {
-				FXMLLoader loader = new FXMLLoader(Main.class.getResource("SignupView.fxml"));
+				FXMLLoader loader = new FXMLLoader(BurritoApp.class.getResource("SignupView.fxml"));
 				
 				// Customize controller instance
 				SignupController signupController =  new SignupController(stage, model);
