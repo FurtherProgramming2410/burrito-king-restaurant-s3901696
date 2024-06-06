@@ -9,7 +9,6 @@ public class Main {
 		RestaurantOld restaurant = new RestaurantOld("Burrito Restaurant");
 		Menu menu = new Menu(restaurant);
 		menu.show();
-		
 	}
 
 }

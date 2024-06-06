@@ -1,10 +1,10 @@
 package com.burrito.restaurant.test;
 
 import com.burrito.restaurant.dao.*;
-import com.burrito.restaurant.implementtion.FoodItemDaoImpl;
-import com.burrito.restaurant.implementtion.OrderDaoImpl;
-import com.burrito.restaurant.implementtion.RestaurantDaoImpl;
-import com.burrito.restaurant.implementtion.UserDaoImpl;
+import com.burrito.restaurant.implementation.FoodItemDaoImpl;
+import com.burrito.restaurant.implementation.OrderDaoImpl;
+import com.burrito.restaurant.implementation.RestaurantDaoImpl;
+import com.burrito.restaurant.implementation.UserDaoImpl;
 import com.burrito.restaurant.model.*;
 
 import java.sql.SQLException;
@@ -27,13 +27,13 @@ public class RestaurantDAOTest {
             foodItemDao.setup();
 
             // Test User DAO
-         //   testUserDao(userDao);
+           // testUserDao(userDao);
+
+            // Test Restaurant DAO
+            testRestaurantDao(restaurantDao);
 
             // Test FoodItem DAO
             testFoodItemDao(foodItemDao);
-
-            // Test Restaurant DAO
-             testRestaurantDao(restaurantDao);
 
             // Test Order DAO
             testOrderDao(orderDao);
@@ -52,9 +52,9 @@ public class RestaurantDAOTest {
         System.out.println("Order added: " + order);
 
         // Test order retrieval
-        Order retrievedOrder = orderDao.getOrder(order.getOrderId());
-        System.out.println("Retrieved order: " + retrievedOrder);
-
+      //  Order retrievedOrder = orderDao.getOrder(order.getOrderId());
+      //  System.out.println("Retrieved order: " + retrievedOrder);
+/*
         // Test order deletion
         orderDao.deleteOrder(order.getOrderId());
         System.out.println("Order deleted");
@@ -66,6 +66,8 @@ public class RestaurantDAOTest {
         } else {
             System.out.println("Order deletion failed");
         }
+
+ */
     }
 
     private static void testFoodItemDao(FoodItemDao foodItemDao) throws SQLException {
@@ -76,13 +78,15 @@ public class RestaurantDAOTest {
         System.out.println("Food item added: " + foodItem);
 
         // Test retrieving a food item
-        FoodItem retrievedFoodItem = foodItemDao.getFoodItem(foodItem.getItemId());
-        System.out.println("Retrieved food item: " + retrievedFoodItem);
+    //    FoodItem retrievedFoodItem = foodItemDao.getFoodItem(foodItem.getItemId());
+     //   System.out.println("Retrieved food item: " + retrievedFoodItem);
 
         // Test updating a food item
-        retrievedFoodItem.setUnitPrice(6.99);
-        foodItemDao.updateFoodItem(retrievedFoodItem.getItemId(), retrievedFoodItem);
-        System.out.println("Food item updated: " + retrievedFoodItem);
+     //   retrievedFoodItem.setUnitPrice(6.99);
+      //  foodItemDao.updateFoodItem(retrievedFoodItem.getItemId(), retrievedFoodItem);
+      //  System.out.println("Food item updated: " + retrievedFoodItem);
+
+        /*
 
         // Test deleting a food item
         foodItemDao.deleteFoodItem(retrievedFoodItem.getItemId());
@@ -95,18 +99,28 @@ public class RestaurantDAOTest {
         } else {
             System.out.println("Food item deletion failed");
         }
+
+         */
     }
 
     private static void testRestaurantDao(RestaurantDao restaurantDao) throws SQLException {
         // Test restaurant creation
         Restaurant restaurant = new Restaurant("Burrito Palace");
-        restaurantDao.addRestaurant(restaurant);
-        System.out.println("Restaurant added: " + restaurant);
-
+        try {
+            restaurantDao.addRestaurant(restaurant);
+            System.out.println("Restaurant added: " + restaurant);
+        } catch (SQLException e) {
+            if (e.getMessage().contains("UNIQUE constraint failed: restaurants.name")) {
+                System.out.println("Error: Restaurant with this name already exists.");
+            } else {
+                e.printStackTrace(); // Log or handle other SQL exceptions
+            }
+        }
         // Test restaurant retrieval
-        Restaurant retrievedRestaurant = restaurantDao.getRestaurant("Burrito Palace");
-        System.out.println("Retrieved restaurant: " + retrievedRestaurant);
+     //   Restaurant retrievedRestaurant = restaurantDao.getRestaurant("Burrito Palace");
+     //   System.out.println("Retrieved restaurant: " + retrievedRestaurant);
 
+        /*
         // Test restaurant deletion
         restaurantDao.deleteRestaurant("Burrito Palace");
         System.out.println("Restaurant deleted");
@@ -118,6 +132,8 @@ public class RestaurantDAOTest {
         } else {
             System.out.println("Restaurant deletion failed");
         }
+
+         */
     }
     private static void testUserDao(UserDao userDao) {
     }

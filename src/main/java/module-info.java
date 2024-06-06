@@ -14,8 +14,8 @@ module com.burrito.restaurant {
     exports com.burrito.restaurant.model;
     exports com.burrito.restaurant.dao;
     exports com.burrito.restaurant.old;
-    exports com.burrito.restaurant.implementtion;
-    opens com.burrito.restaurant.implementtion;
+    exports com.burrito.restaurant.implementation;
+    opens com.burrito.restaurant.implementation;
 
 
 }
