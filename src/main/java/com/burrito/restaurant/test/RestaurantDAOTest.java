@@ -1,6 +1,10 @@
 package com.burrito.restaurant.test;
 
 import com.burrito.restaurant.dao.*;
+import com.burrito.restaurant.implementtion.FoodItemDaoImpl;
+import com.burrito.restaurant.implementtion.OrderDaoImpl;
+import com.burrito.restaurant.implementtion.RestaurantDaoImpl;
+import com.burrito.restaurant.implementtion.UserDaoImpl;
 import com.burrito.restaurant.model.*;
 
 import java.sql.SQLException;
