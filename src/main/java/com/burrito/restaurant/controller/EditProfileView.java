@@ -3,13 +3,19 @@ package com.burrito.restaurant.controller;
 import com.burrito.restaurant.model.Model;
 import com.burrito.restaurant.model.User;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class EditProfileView {
 
@@ -17,8 +23,6 @@ public class EditProfileView {
     private Stage stage;
     private Stage parentStage;
 
-    @FXML
-    private Button back;
 
     @FXML
     private TextField firstName;
@@ -47,11 +51,52 @@ public class EditProfileView {
     @FXML
     public void initialize() {
 
-        setUserInfo();
-        back.setOnAction(event -> {
-            stage.close();
-            parentStage.show();
+        updateUser.setOnAction(event -> {
+            if (model != null && model.getUserDao() != null) {
+                User user = model.getCurrentUser();
+                if (user != null) {
+                    try {
+                        User updatedUser = model.getUserDao().updateUser(user.getUsername(), password.getText(), firstName.getText(), lastName.getText());
+                        if (updatedUser != null) {
+                            status.setText("Updated " + updatedUser.getUsername());
+                            status.setTextFill(Color.GREEN);
+                            // Close the current stage
+                            stage.close();
+                            // Load the login view
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/burrito/restaurant/LoginView.fxml"));
+                            LoginController loginController = new LoginController(parentStage, model); // Assuming parentStage is the login view's stage
+                            loader.setController(loginController);
+                            Parent root = loader.load();
+                            Scene scene = new Scene(root);
+                            parentStage.setScene(scene);
+                            parentStage.show();
+
+                        } else {
+                            status.setText("Cannot Update user");
+                            status.setTextFill(Color.RED);
+                        }
+                    } catch (SQLException e) {
+                        status.setText("Error updating user: " + e.getMessage());
+                        status.setTextFill(Color.RED);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else {
+                    username.setText("No user data available");
+                    firstName.setText("No user data available");
+                    lastName.setText("No user data available");
+                    password.setText("No user data available");
+                }
+            } else {
+                status.setText("Model or UserDao not available");
+                status.setTextFill(Color.RED);
+            }
         });
+
+
+        setUserInfo();
+
+
     }
 
     public void setModel(Model model) {
@@ -72,7 +117,6 @@ public class EditProfileView {
         if (model != null) {
             User user = model.getCurrentUser();
             if (user != null) {
-
                 String firstname = user.getFirstName();
                 String lastname = user.getLastName();
                 String password1 = user.getPassword();
@@ -81,9 +125,7 @@ public class EditProfileView {
                 firstName.setText(firstname);
                 lastName.setText(lastname);
                 password.setText(password1);
-
             } else {
-
                 username.setText("No user data available");
                 firstName.setText("No user data available");
                 lastName.setText("No user data available");
@@ -91,7 +133,5 @@ public class EditProfileView {
             }
         }
     }
-
-
 
 }

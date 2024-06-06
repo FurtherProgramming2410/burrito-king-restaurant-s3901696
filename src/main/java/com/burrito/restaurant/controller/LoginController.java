@@ -50,7 +50,6 @@ public class LoginController {
 						try {
 							FXMLLoader loader = new FXMLLoader(BurritoApp.class.getResource("HomeView.fxml"));
 							HomeController homeController = new HomeController(stage, model);
-							
 							loader.setController(homeController);
 							VBox root = loader.load();
 	
