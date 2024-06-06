@@ -13,7 +13,7 @@ public class Burrito extends FoodItem implements Cookable {
 	 * And then multiple it by the prep time for each batch
 	 */
 	@Override
-	public int getPreparationTime(Restaurant restaurant) {
+	public int getPreparationTime(RestaurantOld restaurant) {
 		return batchPrepTime * ((int) Math.ceil(this.getQuantity() / ((double)batchSize)));
 	}
 	
@@ -22,7 +22,7 @@ public class Burrito extends FoodItem implements Cookable {
 	 * Therefore, we always cook the number of burritos ordered by customer
 	 */
 	@Override
-	public int getActualQuantityCooked(Restaurant restaurant) {
+	public int getActualQuantityCooked(RestaurantOld restaurant) {
 		return this.getQuantity();
 	}
 }

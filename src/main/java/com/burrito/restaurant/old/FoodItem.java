@@ -7,7 +7,6 @@ public class FoodItem {
 		this.unitPrice = price;
 		this.quantity = quantity;
 	}
-	
 	public double getUnitPrice() {
 		return this.unitPrice;
 	}

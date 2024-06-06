@@ -93,10 +93,7 @@ public class EditProfileView {
             }
         });
 
-
         setUserInfo();
-
-
     }
 
     public void setModel(Model model) {

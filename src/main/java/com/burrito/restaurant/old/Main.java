@@ -6,7 +6,7 @@ package com.burrito.restaurant.old;
 public class Main {
 	
 	public static void main(String args[]){
-		Restaurant restaurant = new Restaurant("Burrito Restaurant");
+		RestaurantOld restaurant = new RestaurantOld("Burrito Restaurant");
 		Menu menu = new Menu(restaurant);
 		menu.show();
 		

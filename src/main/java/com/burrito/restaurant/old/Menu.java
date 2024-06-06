@@ -7,9 +7,9 @@ import java.util.Scanner;
  * The class for menu navigation.
  */
 public class Menu {
-	private Restaurant restaurant;
+	private RestaurantOld restaurant;
 	private Order activeOrder;
-	public Menu(Restaurant restaurant) {
+	public Menu(RestaurantOld restaurant) {
 		this.restaurant = restaurant;
 		this.activeOrder = new Order();
 	}
@@ -115,20 +115,20 @@ public class Menu {
     		if (option == 1) {
     			System.out.print("How many burritos would you like to buy: ");
     			int quantity = Integer.parseInt(readUserInput());
-    			this.activeOrder.addFoodItem(new Burrito(Restaurant.getPrice("Burrito"), quantity));
+    			this.activeOrder.addFoodItem(new Burrito(RestaurantOld.getPrice("Burrito"), quantity));
     		}else if (option == 2){
     			System.out.print("How many serves of fries would you like to buy: ");
     			int quantity = Integer.parseInt(readUserInput());
-    			this.activeOrder.addFoodItem(new Fries(Restaurant.getPrice("Fries"), quantity));
+    			this.activeOrder.addFoodItem(new Fries(RestaurantOld.getPrice("Fries"), quantity));
     		}else if (option == 3) {
     			System.out.print("How many soda would you like to buy: ");
     			int quantity = Integer.parseInt(readUserInput());
-    			this.activeOrder.addFoodItem(new Soda(Restaurant.getPrice("Soda"), quantity));
+    			this.activeOrder.addFoodItem(new Soda(RestaurantOld.getPrice("Soda"), quantity));
     		}else if (option == 4) {
     			System.out.print("How many meals would you like to buy: ");
     			int quantity = Integer.parseInt(readUserInput());
-    			double price = Restaurant.getPrice("Burrito") + Restaurant.getPrice("Fries") 
-    			+ Restaurant.getPrice("Soda") - Restaurant.getDiscount();
+    			double price = RestaurantOld.getPrice("Burrito") + RestaurantOld.getPrice("Fries")
+    			+ RestaurantOld.getPrice("Soda") - RestaurantOld.getDiscount();
     			this.activeOrder.addFoodItem(new Meal(price, quantity));
     		}else if (option == 5) {
     			finishedOrdering = true;
@@ -233,15 +233,15 @@ public class Menu {
     	int newPrice = Integer.parseInt(readUserInput());
     	switch(option) {
     	case 1:
-    		Restaurant.updatePrice("Burrito", newPrice);
+    		RestaurantOld.updatePrice("Burrito", newPrice);
     		System.out.println("The unit price of burrito is updated to $" + newPrice + ".");
     		break;
     	case 2:
-    		Restaurant.updatePrice("Fries", newPrice);
+    		RestaurantOld.updatePrice("Fries", newPrice);
     		System.out.println("The unit price of fries is updated to $" + newPrice + ".");
     		break;
     	case 3:
-    		Restaurant.updatePrice("Soda", newPrice);
+    		RestaurantOld.updatePrice("Soda", newPrice);
     		System.out.println("The unit price of soda is updated to $" + newPrice + ".");
     		break;
     	case 4:

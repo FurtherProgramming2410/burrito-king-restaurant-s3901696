@@ -13,6 +13,9 @@ public class Order {
         items = new LinkedList<FoodItem>();
     }
 
+    public Order(int id, int restaurantId) {
+    }
+
     public void addFoodItem(FoodItem newItem) {
         for (FoodItem item : items) {
             if (item.getClass().getName().equals(newItem.getClass().getName())) {
@@ -26,7 +29,6 @@ public class Order {
     public LinkedList<FoodItem> getItems() {
         return this.items;
     }
-
     /*
      * The method for calculating the total price of an order
      */
@@ -41,14 +43,12 @@ public class Order {
     /*
      * The method for calculating the total preparation time of an order
      */
-    public double getPrepTime(Restaurant restaurant) {
+    public double getPrepTime(RestaurantOld restaurant) {
         HashMap<String, Integer> cookables = this.mapToCookables();
-        double cookTimeForBurritos = new Burrito(Restaurant.getPrice("Burrito"), cookables.get("Burritos")).getPreparationTime(restaurant);
-        double cookTimeForFries = new Fries(Restaurant.getPrice("Fries"), cookables.get("Fries")).getPreparationTime(restaurant);
+        double cookTimeForBurritos = new Burrito(RestaurantOld.getPrice("Burrito"), cookables.get("Burritos")).getPreparationTime(restaurant);
+        double cookTimeForFries = new Fries(RestaurantOld.getPrice("Fries"), cookables.get("Fries")).getPreparationTime(restaurant);
         return Math.max(cookTimeForFries, cookTimeForBurritos);
-
     }
-
     /*
      * The method that maps a list of ordered food items to a map
      * containing the number of different items to be cooked.
