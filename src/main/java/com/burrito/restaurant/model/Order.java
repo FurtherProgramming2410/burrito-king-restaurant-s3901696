@@ -62,7 +62,6 @@ public class Order {
         return Math.max(cookTimeForFries, cookTimeForBurritos);
     }
 
-
     public HashMap<String, Integer> mapToCookables() {
         int numOfBurritos = 0;
         int numOfFries = 0;

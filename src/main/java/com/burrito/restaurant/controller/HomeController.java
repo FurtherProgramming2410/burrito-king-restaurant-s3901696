@@ -1,7 +1,7 @@
 package com.burrito.restaurant.controller;
 
 import com.burrito.restaurant.BurritoApp;
-import com.burrito.restaurant.model.Model;
+import com.burrito.restaurant.model.UserDetails;
 import com.burrito.restaurant.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,12 +12,11 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import java.io.IOException;
-import java.sql.SQLException;
 
 
 public class HomeController {
 
-	private Model model;
+	private UserDetails userDetails;
 	private Stage stage;
 	private Stage parentStage;
 
@@ -34,7 +33,7 @@ public class HomeController {
 			try {
 				FXMLLoader loader = new FXMLLoader(BurritoApp.class.getResource("EditProfileView.fxml"));
 				// Customize controller instance
-				EditProfileView editProfileView =  new EditProfileView(model, stage);
+				EditProfileView editProfileView =  new EditProfileView(userDetails, stage);
 				loader.setController(editProfileView);
 				VBox root = loader.load();
 				editProfileView.showStage(root);
@@ -44,15 +43,15 @@ public class HomeController {
 			}});
 	}
 
-	public void setModel(Model model) {
-		this.model = model;
+	public void setModel(UserDetails userDetails) {
+		this.userDetails = userDetails;
 		// After setting the model, update the user info to reflect the current user.
 		updateUserInfo();
 	}
 
 	private void updateUserInfo() {
-		if (model != null) {
-			User user = model.getCurrentUser();
+		if (userDetails != null) {
+			User user = userDetails.getCurrentUser();
 			if (user != null) {
 				String firstName = user.getFirstName();
 				String lastName = user.getLastName();
@@ -63,12 +62,11 @@ public class HomeController {
 		}
 	}
 
-	public HomeController(Stage parentStage, Model model) {
+	public HomeController(Stage parentStage, UserDetails userDetails) {
 		this.stage = new Stage();
 		this.parentStage = parentStage;
-		this.model = model;
+		this.userDetails = userDetails;
 	}
-
 
 	// Add your code to complete the functionality of the program
 	public void showStage(Pane root) {

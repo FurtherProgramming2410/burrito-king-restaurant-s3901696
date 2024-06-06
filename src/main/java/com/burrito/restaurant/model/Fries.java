@@ -1,6 +1,7 @@
 package com.burrito.restaurant.model;
 
 public class Fries extends FoodItem implements Cookable {
+
     private static final int prepTimeForOneServe = 8;
     private static final int batchSize = 5;
 

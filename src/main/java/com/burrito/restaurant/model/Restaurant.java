@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class Restaurant {
+
     private String name;
     private static final HashMap<String, Double> priceMap = new HashMap<>();
     private int remainedFries;

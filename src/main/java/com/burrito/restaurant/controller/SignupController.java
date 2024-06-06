@@ -1,6 +1,6 @@
 package com.burrito.restaurant.controller;
 
-import com.burrito.restaurant.model.Model;
+import com.burrito.restaurant.model.UserDetails;
 import com.burrito.restaurant.model.User;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -32,12 +32,12 @@ public class SignupController {
 	
 	private Stage stage;
 	private Stage parentStage;
-	private Model model;
+	private UserDetails userDetails;
 	
-	public SignupController(Stage parentStage, Model model) {
+	public SignupController(Stage parentStage, UserDetails userDetails) {
 		this.stage = new Stage();
 		this.parentStage = parentStage;
-		this.model = model;
+		this.userDetails = userDetails;
 	}
 
 	@FXML
@@ -46,7 +46,7 @@ public class SignupController {
 			if (!username.getText().isEmpty() && !password.getText().isEmpty()) {
 				User user;
 				try {
-					user = model.getUserDao().createUser(username.getText(), password.getText(),firstName.getText(),lastName.getText());
+					user = userDetails.getUserDao().createUser(username.getText(), password.getText(),firstName.getText(),lastName.getText());
 					if (user != null) {
 						status.setText("Created " + user.getUsername());
 						status.setTextFill(Color.GREEN);

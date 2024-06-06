@@ -1,6 +1,6 @@
 package com.burrito.restaurant.controller;
 
-import com.burrito.restaurant.model.Model;
+import com.burrito.restaurant.model.UserDetails;
 import com.burrito.restaurant.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,10 +19,9 @@ import java.sql.SQLException;
 
 public class EditProfileView {
 
-    private Model model;
+    private UserDetails userDetails;
     private Stage stage;
     private Stage parentStage;
-
 
     @FXML
     private TextField firstName;
@@ -42,9 +41,9 @@ public class EditProfileView {
     @FXML
     private TextField username;
 
-    public EditProfileView(Model model, Stage parentStage) {
+    public EditProfileView(UserDetails userDetails, Stage parentStage) {
         this.stage = new Stage();
-        this.model = model;
+        this.userDetails = userDetails;
         this.parentStage = parentStage;
     }
 
@@ -52,11 +51,11 @@ public class EditProfileView {
     public void initialize() {
 
         updateUser.setOnAction(event -> {
-            if (model != null && model.getUserDao() != null) {
-                User user = model.getCurrentUser();
+            if (userDetails != null && userDetails.getUserDao() != null) {
+                User user = userDetails.getCurrentUser();
                 if (user != null) {
                     try {
-                        User updatedUser = model.getUserDao().updateUser(user.getUsername(), password.getText(), firstName.getText(), lastName.getText());
+                        User updatedUser = userDetails.getUserDao().updateUser(user.getUsername(), password.getText(), firstName.getText(), lastName.getText());
                         if (updatedUser != null) {
                             status.setText("Updated " + updatedUser.getUsername());
                             status.setTextFill(Color.GREEN);
@@ -64,7 +63,7 @@ public class EditProfileView {
                             stage.close();
                             // Load the login view
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/burrito/restaurant/LoginView.fxml"));
-                            LoginController loginController = new LoginController(parentStage, model); // Assuming parentStage is the login view's stage
+                            LoginController loginController = new LoginController(parentStage, userDetails); // Assuming parentStage is the login view's stage
                             loader.setController(loginController);
                             Parent root = loader.load();
                             Scene scene = new Scene(root);
@@ -96,8 +95,8 @@ public class EditProfileView {
         setUserInfo();
     }
 
-    public void setModel(Model model) {
-        this.model = model;
+    public void setModel(UserDetails userDetails) {
+        this.userDetails = userDetails;
         setUserInfo();
     }
 
@@ -111,8 +110,8 @@ public class EditProfileView {
     }
 
     private void setUserInfo() {
-        if (model != null) {
-            User user = model.getCurrentUser();
+        if (userDetails != null) {
+            User user = userDetails.getCurrentUser();
             if (user != null) {
                 String firstname = user.getFirstName();
                 String lastname = user.getLastName();

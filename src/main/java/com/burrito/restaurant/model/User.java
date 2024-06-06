@@ -1,10 +1,9 @@
 package com.burrito.restaurant.model;
 
-import com.burrito.restaurant.old.Order;
-
 import java.util.List;
 
 public class User {
+
 	private String username;
 	private String password;
 	private String firstName;
@@ -27,7 +26,6 @@ public class User {
 		this.firstName =firstName;
 		this.lastName = lastName;
 	}
-
 
 	public String getUsername() {
 		return username;

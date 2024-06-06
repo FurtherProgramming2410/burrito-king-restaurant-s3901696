@@ -1,6 +1,7 @@
 package com.burrito.restaurant.model;
 
 public class FoodItem {
+
     private int itemId; // Add this field
     private double unitPrice;
     int quantity;

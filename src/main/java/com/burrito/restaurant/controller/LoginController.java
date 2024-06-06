@@ -1,7 +1,7 @@
 package com.burrito.restaurant.controller;
 
 import com.burrito.restaurant.BurritoApp;
-import com.burrito.restaurant.model.Model;
+import com.burrito.restaurant.model.UserDetails;
 import com.burrito.restaurant.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,12 +30,12 @@ public class LoginController {
 	@FXML
 	private Button signup;
 
-	private Model model;
+	private UserDetails userDetails;
 	private Stage stage;
 	
-	public LoginController(Stage stage, Model model) {
+	public LoginController(Stage stage, UserDetails userDetails) {
 		this.stage = stage;
-		this.model = model;
+		this.userDetails = userDetails;
 	}
 	
 	@FXML
@@ -44,12 +44,12 @@ public class LoginController {
 			if (!name.getText().isEmpty() && !password.getText().isEmpty()) {
 				User user;
 				try {
-					user = model.getUserDao().getUser(name.getText(), password.getText());
+					user = userDetails.getUserDao().getUser(name.getText(), password.getText());
 					if (user != null) {
-						model.setCurrentUser(user);
+						userDetails.setCurrentUser(user);
 						try {
 							FXMLLoader loader = new FXMLLoader(BurritoApp.class.getResource("HomeView.fxml"));
-							HomeController homeController = new HomeController(stage, model);
+							HomeController homeController = new HomeController(stage, userDetails);
 							loader.setController(homeController);
 							VBox root = loader.load();
 	
@@ -81,7 +81,7 @@ public class LoginController {
 				FXMLLoader loader = new FXMLLoader(BurritoApp.class.getResource("SignupView.fxml"));
 				
 				// Customize controller instance
-				SignupController signupController =  new SignupController(stage, model);
+				SignupController signupController =  new SignupController(stage, userDetails);
 
 				loader.setController(signupController);
 				VBox root = loader.load();
