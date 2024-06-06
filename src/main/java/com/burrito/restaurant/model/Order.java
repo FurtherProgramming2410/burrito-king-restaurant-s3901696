@@ -6,6 +6,13 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class Order {
+
+    private int orderId;
+
+    public int getOrderId() {
+        return orderId;
+    }
+
     private LinkedList<FoodItem> items;
 
     public Order() {
@@ -15,12 +22,21 @@ public class Order {
     public void addFoodItem(FoodItem newItem) {
         for (FoodItem item : items) {
             if (item.getClass().equals(newItem.getClass())) {
-                item.addQuantity(newItem.getQuantity());
+                if (item instanceof Burrito) {
+                    ((Burrito) item).addQuantity(newItem.getQuantity());
+                } else if (item instanceof Fries) {
+                    ((Fries) item).addQuantity(newItem.getQuantity());
+                } else if (item instanceof Soda) {
+                    ((Soda) item).addQuantity(newItem.getQuantity());
+                } else if (item instanceof Meal) {
+                    ((Meal) item).addQuantity(newItem.getQuantity());
+                }
                 return;
             }
         }
         items.add(newItem);
     }
+
 
     public LinkedList<FoodItem> getItems() {
         return new LinkedList<>(items);
@@ -29,10 +45,11 @@ public class Order {
     public double getTotalPrice() {
         double sum = 0.0;
         for (FoodItem item : items) {
-            sum += item.getTotalPrice();
+            sum += item.getUnitPrice() * item.getQuantity();
         }
         return sum;
     }
+
 
     public double getPrepTime(Restaurant restaurant) {
         HashMap<String, Integer> cookables = mapToCookables();

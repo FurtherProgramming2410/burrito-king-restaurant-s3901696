@@ -52,4 +52,8 @@ public class Restaurant {
     public void addOrderToHistory(Order order) {
         allOrders.add(order);
     }
+
+    public void setRemainedFries(int remainedFries) {
+        this.remainedFries = remainedFries;
+    }
 }

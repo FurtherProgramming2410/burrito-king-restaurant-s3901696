@@ -31,4 +31,8 @@ public class Fries extends FoodItem implements Cookable {
     public int getPreparationTime(Restaurant restaurant) {
         return prepTimeForOneServe * getActualBatchesCooked(restaurant.getRemainedFries());
     }
+
+    public void addQuantity(int additionalQuantity) {
+        this.quantity += additionalQuantity;
+    }
 }
