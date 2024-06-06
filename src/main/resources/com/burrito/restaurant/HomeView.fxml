@@ -25,7 +25,7 @@
                                     <Insets bottom="10.0" left="16.0" right="10.0" top="10.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="editUserBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onActoinEditUser" text="EditProfile">
+                              <Button fx:id="editUserBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="EditProfile">
                                  <HBox.margin>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </HBox.margin>
@@ -65,7 +65,7 @@
                   <TableColumn prefWidth="164.0" text="Order Status" />
               </columns>
                <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="5.0" left="2.0" right="5.0" top="5.0" />
                </padding>
             </TableView>
          </children>
