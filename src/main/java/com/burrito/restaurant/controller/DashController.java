@@ -38,7 +38,10 @@ public class DashController implements Initializable {
     }
 
     public void placeOrderBtnAction(ActionEvent actionEvent) {
-
+        FXUtil.loadView(actionEvent, FXUtil.PLACE_ORDER_VIEW, "Place Order");
     }
 
+    public void submitOrderBtnAction(ActionEvent actionEvent) {
+
+    }
 }

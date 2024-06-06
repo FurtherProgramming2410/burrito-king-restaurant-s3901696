@@ -17,6 +17,7 @@ public class FXUtil {
     public static final String SIGN_UP_VIEW = "signup-view.fxml";
     public static final String DASH_VIEW = "dash-view.fxml";
     public static final String EDIT_PROFILE_VIEW = "edit-profile-view.fxml";
+    public static final String PLACE_ORDER_VIEW = "place-order-view.fxml";
 
     /**
      * Load an FXML view in a new stage and transfer data to its controller.
