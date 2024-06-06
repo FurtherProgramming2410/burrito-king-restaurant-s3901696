@@ -8,9 +8,7 @@ import java.sql.*;
 
 public class UserDaoImpl implements UserDao {
 	private final String TABLE_NAME = "users";
-
 	public UserDaoImpl() {
-
 	}
 
 	@Override
@@ -40,6 +38,8 @@ public class UserDaoImpl implements UserDao {
 					User user = new User();
 					user.setUsername(rs.getString("username"));
 					user.setPassword(rs.getString("password"));
+					user.setFirstName(rs.getString("first_name"));
+					user.setLastName(rs.getString("last_name"));
 					return user;
 				}
 				return null;
@@ -61,4 +61,7 @@ public class UserDaoImpl implements UserDao {
 			return new User(username, password);
 		} 
 	}
+
+
+
 }

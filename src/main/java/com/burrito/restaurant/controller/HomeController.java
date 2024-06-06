@@ -29,7 +29,26 @@ public class HomeController {
 
 	@FXML
 	public void initialize() {
+		updateUserInfo();
+	}
 
+	public void setModel(Model model) {
+		this.model = model;
+		// After setting the model, update the user info to reflect the current user.
+		updateUserInfo();
+	}
+
+	private void updateUserInfo() {
+		if (model != null) {
+			User user = model.getCurrentUser();
+			if (user != null) {
+				String firstName = user.getFirstName();
+				String lastName = user.getLastName();
+				userName.setText(firstName + " " + lastName);
+			} else {
+				userName.setText("No user data available");
+			}
+		}
 	}
 
 
@@ -46,7 +65,7 @@ public class HomeController {
 
 	// Add your code to complete the functionality of the program
 	public void showStage(Pane root) {
-		Scene scene = new Scene(root, 500, 300);
+		Scene scene = new Scene(root, 700, 500);
 		stage.setScene(scene);
 		stage.setResizable(false);
 		stage.setTitle("Home");
