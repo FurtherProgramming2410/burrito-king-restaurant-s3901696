@@ -14,8 +14,8 @@ import javafx.stage.Stage;
 public class FXUtil {
 
     public static final String LOGIN_VIEW = "login-view.fxml";
-    public static final String HOME_VIEW = "home-view.fxml";
     public static final String SIGN_UP_VIEW = "signup-view.fxml";
+    public static final String DASH_VIEW = "dash-view.fxml";
     public static final String EDIT_PROFILE_VIEW = "edit-profile-view.fxml";
 
     /**

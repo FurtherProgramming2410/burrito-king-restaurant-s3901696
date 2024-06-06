@@ -7,8 +7,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDaoImpl implements UserDao {
+
     private final String TABLE_NAME = "users";
     private Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
@@ -22,6 +25,20 @@ public class UserDaoImpl implements UserDao {
         } catch (SQLException e) {
             logger.error("Error while setting up " + this.getClass().getSimpleName(), e);
         }
+    }
+
+    @Override
+    public List<User> getAll() throws SQLException {
+        String sql = "SELECT * FROM " + TABLE_NAME;
+        List<User> users = new ArrayList<>();
+        try (Connection connection = DbConnection.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                users.add(mapResultSetToUser(rs));
+            }
+        }
+        return users;
     }
 
     @Override

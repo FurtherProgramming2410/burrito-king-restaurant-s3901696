@@ -3,8 +3,11 @@ package com.burrito.restaurant.db;
 
 import com.burrito.restaurant.model.User;
 import java.sql.SQLException;
+import java.util.List;
 
 public interface UserDao {
+
+    List<User> getAll() throws SQLException;
 
     User getById(int id) throws SQLException;
 
