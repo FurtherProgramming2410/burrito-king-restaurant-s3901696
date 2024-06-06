@@ -8,13 +8,26 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Label prefHeight="17.0" prefWidth="250.0" text="First Name" />
+      <TextField fx:id="firstName" maxWidth="250.0">
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </TextField>
+      <Label prefHeight="17.0" prefWidth="250.0" text="Last Name" />
+      <TextField fx:id="lastName" maxWidth="250.0">
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </TextField>
       <Label prefHeight="17.0" prefWidth="250.0" text="Username" />
       <TextField fx:id="username" maxWidth="250.0">
          <VBox.margin>
             <Insets bottom="5.0" />
-         </VBox.margin></TextField>
+         </VBox.margin>
+      </TextField>
       <Label prefWidth="250.0" text="Password" />
       <PasswordField fx:id="password" maxWidth="250.0">
          <VBox.margin>

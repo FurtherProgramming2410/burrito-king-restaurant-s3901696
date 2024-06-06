@@ -1,5 +1,8 @@
 package com.burrito.restaurant.model;
 
+import com.burrito.restaurant.dao.UserDao;
+import com.burrito.restaurant.dao.UserDaoImpl;
+
 import java.sql.SQLException;
 
 public class Model {
